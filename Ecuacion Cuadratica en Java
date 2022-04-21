@@ -1,0 +1,78 @@
+package EcuacionCuadratica;
+
+import static java.lang.Math.sqrt;
+import java.util.Scanner;
+
+public class EcuacionCuadratica {
+
+    public static void main(String args[]) {
+
+        Scanner leer = new Scanner(System.in);
+
+        int valA = 0, valB = 0, valC = 0;
+
+        System.out.printf("Inserte el valor de a: ");
+        valA = leer.nextInt();
+        System.out.printf("Inserte el valor de b: ");
+        valB = leer.nextInt();
+        System.out.printf("Inserte el valor de c: ");
+        valC = leer.nextInt();
+        System.out.println();
+
+        double x1 = calX1(valA, valB, valC);
+        double x2 = calX2(valA, valB, valC);
+        String valRaiz = valRaiz(valA, valB, valC);
+
+        if (x1 == x2) {
+            System.out.println("El valor de x es: "+"\n");
+            System.out.printf("x = " + x1 + " ☻" + "\n");
+
+            if (valA == 1) {
+                System.out.println("Su ecuación de segundo grado es: " + "x^2 " + valB + "x" + " + " + valC + " = " + 0);
+            } else {
+                System.out.println("Su ecuación de segundo grado es: " + valA + "x^2 " + valB + "x" + " + " + valC + " = " + 0);
+            }
+
+        } else {
+            
+            System.out.println("Los valores de x1 y x2 son: "+"\n");
+            System.out.printf("x1 = " + x1 + " ☻" + "\n");
+            System.out.println("x2 = " + x2 + " ☻"+"\n");
+            
+            if (valA == 1) {
+                System.out.println("Su ecuación de segundo grado es: " + "x^2 " + valB + "x" + " + " + valC + " = " + 0);
+            } else {
+                System.out.println("Su ecuación de segundo grado es: " + valA + "x^2 " + valB + "x" + " + " + valC + " = " + 0);
+            }
+
+        }
+
+        System.out.println(valRaiz);
+
+    }
+
+    public static double calX1(int valA, int valB, int valC) {
+
+        //x^2-nx+n
+        double valx1 = (-1 * (valB) + sqrt((valB * valB) - (4 * (valA * valC)))) / (2 * (valA));
+
+        return valx1;
+    }
+
+    public static double calX2(int valA, int valB, int valC) {
+
+        //x^2-nx+n
+        double valx2 = (-1 * (valB) - sqrt((valB * valB) - (4 * (valA * valC)))) / (2 * (valA));
+        return valx2;
+    }
+
+    public static String valRaiz(int valA, int valB, int valC) {
+        String raiz = "";
+
+        if (((valB * valB) - (4 * (valA * valC))) < 0) {
+            raiz = "No pertenecen a los números reales [ ∉R], "
+                    + "intente multiplicar por -1 la ecuación de segundo grado.";
+        }
+        return raiz;
+    }
+}
